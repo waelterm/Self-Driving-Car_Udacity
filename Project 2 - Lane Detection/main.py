@@ -7,6 +7,7 @@ from locate_lines import fit_polynomial
 from search_prior import search_around_poly
 from curvature import measure_curvature_real
 from curvature import lane_center_offset
+from curvature import measure_lane_curvature_real
 from draw_image import draw_image
 from numpy.linalg import inv
 from moviepy.editor import VideoFileClip
@@ -103,24 +104,39 @@ def process_image(img):
                          ally = None, current_fit = left_fit, fitx = left_fitx)
         right_line.update(detected=True, radius_of_curvature=right_curv, allx=None,
                          ally=None, current_fit=right_fit, fitx = right_fitx)
-        print("Curvature of left lane line: {}".format(left_curv))
+        #print("Curvature of left lane line: {}".format(left_curv))
         print("Curvature of right lane line: {}".format(right_curv))
-        offset = lane_center_offset(left_line.line_base_pos, right_line.line_base_pos)
-        print("Lane Center Offset: {}".format(offset))
     else:
         print("Warning: Lines were not detected!")
         left_line.detected = False
         right_line.detected = False
         left_line.cnt += 1
         right_line.cnt += 1
+    print("Curvature of right lane line: {}".format(right_curv))
 
+    lane_curvature = measure_lane_curvature_real(warped, copy.copy(left_line.best_fit), copy.copy(right_line.best_fit))
+    offset = lane_center_offset(left_line.line_base_pos, right_line.line_base_pos)
+    print("Lane Center Offset: {}".format(offset))
     output = draw_image(warped, left_line.recent_xfitted, right_line.recent_xfitted, ploty, img, inv(M), undistorted)
+    # I used this as an example to understand how to use cv2.putText:
+    # https: // www.programcreek.com / python / example / 83399 / cv2.putText
+    cv2.putText(output, "Radius of curvature: {:.2f}m".format(lane_curvature), org = (200,75), \
+                fontFace = cv2.FONT_HERSHEY_SIMPLEX,fontScale=1, color = (255, 255, 255), thickness=2, lineType=cv2.LINE_AA)
+    if offset < 0:
+        offset_string = "Vehicle is {:.2f}m left of center.".format(abs(offset))
+    else:
+        offset_string = "Vehicle is {:.2f}m right of center.".format(offset)
+    cv2.putText(output, offset_string, org=(200, 150), \
+                fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2,
+                lineType=cv2.LINE_AA)
+    #cv2.imshow("Display Corners", output)
+    #cv2.waitKey(0)
     return output
 
 
 if __name__ == '__main__':
     # Running calibration on calibration images
-    do_calibration = True
+    do_calibration = False
     if do_calibration:
         calibration_images = "camera_cal/"
         dimension_list = [[5, 9], [6, 9], [6, 9], [6, 9], [6, 9], [6, 9], [6, 9], [6, 9], [6, 9], [6, 9], [6, 9],

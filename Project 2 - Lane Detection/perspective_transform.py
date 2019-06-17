@@ -9,6 +9,9 @@ def find_polygon(straight_line_image):
     :return: None
     """
     pts = np.array([[217, 705], [606, 440], [676, 440], [1105, 705]], np.int32)
+    # I have lowered the upper corners of the polynomial from the originally found corners above to avoid having parts
+    # of the lane cut off after the perspective transform
+    pts = np.array([[217, 705], [606-int(39/2), 440+13], [676+int(43/2), 440+13], [1105, 705]], np.int32)
     pts = pts.reshape((-1, 1, 2))
     cv2.polylines(straight_line_image, [pts], True, (0, 0, 255), thickness = 2)
     cv2.imshow("Show Polygon", straight_line_image)
@@ -20,7 +23,10 @@ def perspective_transform(undistort):
     :param undistorted image
     :return: warped image and transformation matrix
     """
-    src = np.float32([[217, 705],[606, 440] , [676, 440], [1105, 705]])
+    # I have lowered the upper corners of the polynomial from the originally found corners above to avoid having parts
+    # of the lane cut off after the perspective transform
+    #src = np.float32([[217, 705],[606, 440] , [676, 440], [1105, 705]])
+    src = np.float32([[217, 705], [606-int(39/2), 440+13], [676+int(43/2), 440+13], [1105, 705]])
     dst = np.float32([[250, 720], [250 , 0], [1280-250, 0], [1290 - 250, 720]])
     M = cv2.getPerspectiveTransform(src, dst)
     warped = cv2.warpPerspective(undistort, M, (undistort.shape[1], undistort.shape[0]), flags=cv2.INTER_LINEAR)
