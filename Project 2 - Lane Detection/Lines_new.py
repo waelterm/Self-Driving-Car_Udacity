@@ -44,7 +44,7 @@ class Line():
         This function updates the Lane line class
         :return: NOne
         """
-        print("Current_fit received: {}".format(current_fit))
+        #print("Current_fit received: {}".format(current_fit))
         self.cnt = 0
         self.detected = detected
         self.recent_xfitted_list.append(fitx)
@@ -59,7 +59,7 @@ class Line():
             self.all_fit = self.all_fit[1:]
         self.best_fit = np.array([np.mean([fit[0] for fit in self.all_fit]),np.mean([fit[1] for fit in self.all_fit]), np.mean([fit[2] for fit in self.all_fit])])
         self.radius_of_curvature = radius_of_curvature
-        self.line_base_pos = self.best_fit[2] * XM_PER_PIX
+        self.line_base_pos = (self.best_fit[0] * 720 ** 2 + self.best_fit[1] * 720 + self.best_fit[2]) * XM_PER_PIX
         self.diffs = self.current_fit - self.all_fit[-2]
         self.allx = allx
         self.ally = ally

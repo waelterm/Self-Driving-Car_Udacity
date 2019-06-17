@@ -134,6 +134,25 @@ def fit_polynomial(binary_warped):
     # Colors in the left and right lane regions
     out_img[lefty, leftx] = [255, 0, 0]
     out_img[righty, rightx] = [0, 0, 255]
+    show_polynomial = False
+    if show_polynomial:
+        y_left = []
+        x_left = []
+        y_right = []
+        x_right = []
+        for i in range(len(left_fitx)):
+            if int(left_fitx[i]) < 1279 and int(left_fitx[i]) > 1:
+                for j in range(3):
+                    y_left.append(int(ploty[i]))
+                    x_left.append(int(left_fitx[i])+j -1)
+            if int(right_fitx[i]) < 1279 and int(right_fitx[i]) > 1:
+                for j in range(3):
+                    y_right.append(int(ploty[i]))
+                    x_right.append(int(right_fitx[i])+j -1)
+
+        out_img[y_left, x_left] = [255, 255, 255]
+        out_img[y_right, x_right] = [255, 255, 255]
+
 
     # Plots the left and right polynomials on the lane lines
     #plt.plot(left_fitx, ploty, color='yellow')

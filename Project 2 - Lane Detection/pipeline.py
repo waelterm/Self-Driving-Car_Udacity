@@ -10,6 +10,23 @@ from search_prior import search_around_poly
 from curvature import measure_curvature_real
 from draw_image import draw_image
 from numpy.linalg import inv
+from curvature import lane_center_offset
+import copy
+
+LANE_PIXEL_WIDTH = 1105-217
+LANE_PIXEL_LENGTH = 705 - 440
+YM_PER_PIX = 30/LANE_PIXEL_LENGTH
+XM_PER_PIX = 3.7/LANE_PIXEL_WIDTH
+
+def poly_result(fit, y):
+    """
+    This function evaluates a polynomial of 2nd order
+    :param fit: polyomial coefficients
+    :param y: independent variable
+    :return: dependent variable
+    """
+    x = fit[0] * y ** 2 + fit[1] * y + fit[2]
+    return x
 
 def compare_images(image_1, image_2, gray_1=False, gray_2=False, title_1='Original Image',
                    title_2='Modified Image'):
@@ -65,7 +82,7 @@ def pipeline(write_images, show_images, show_images2, write_images2, show_images
     test_images = "test_images/"
     all_files = os.listdir(test_images)
     image_names = [file for file in all_files if file[-4:] == '.jpg']
-    init = False # init flag decides if box algorithm or search near polynomial is used to find lane lines
+    init = True # init flag decides if box algorithm or search near polynomial is used to find lane lines
     for image in image_names:
         print(test_images + image)
         img = cv2.imread(test_images + image)
@@ -81,9 +98,9 @@ def pipeline(write_images, show_images, show_images2, write_images2, show_images
         if write_images2:
             cv2.imwrite(test_images + "warped/" + image, warped * 255);
         if init:
-            out_img, left_fit, right_fit, ploty, left_fitx, right_fitx = fit_polynomial(warped)
+            out_img, left_fit, right_fit, ploty, left_fitx, right_fitx, lefty, leftx, righty, rightx = fit_polynomial(warped)
             if show_images3:
-                print(out_img)
+                #print(out_img)
                 compare_images(undistorted, out_img, True, True, 'Undistorted Image', 'Annotated Image')
             if write_images3:
                 cv2.imwrite(test_images + "fitted/" + image, out_img);
@@ -95,9 +112,18 @@ def pipeline(write_images, show_images, show_images2, write_images2, show_images
                 compare_images(undistorted, out_img, True, True, 'Undistorted Image', 'Annotated Image')
             if write_images3:
                 cv2.imwrite(test_images + "fitted/" + image, out_img);
-        left_curv, right_curv, left_fit_cr, right_fit_cr = measure_curvature_real(warped, left_fit, right_fit)
+        left_curv, right_curv, left_fit_cr, right_fit_cr = measure_curvature_real(warped, copy.copy(left_fit), copy.copy(right_fit))
+        #print("Left Fit: {}".format(left_fit))
+        #print("Right Fit: {}".format(right_fit))
+
         print("Left curvature: {}".format(left_curv))
         print("Right curvature: {}".format(right_curv))
+        right_base = poly_result(right_fit, 720) * XM_PER_PIX
+        left_base = poly_result(left_fit, 720) * XM_PER_PIX
+        print("Left Base: {}".format(left_base))
+        print("Right Base: {}".format(right_base))
+        offset = lane_center_offset(left_base, right_base)
+        print("Lane Center Offset: {}".format(offset))
         # Checking that they have similar curvature
         # Checking that they are separated by approximately the right distance horizontally
         # Checking that they are roughly parallel ???????
@@ -113,4 +139,4 @@ def pipeline(write_images, show_images, show_images2, write_images2, show_images
 
 if __name__ == '__main__':
     pipeline(write_images=False, write_images2=False, write_images3=False, show_images=False, show_images2=False,
-             show_images3=True, show_images4= False, write_images4= True)
+             show_images3=True, show_images4= True, write_images4= False)

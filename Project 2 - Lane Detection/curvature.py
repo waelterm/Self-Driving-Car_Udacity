@@ -5,6 +5,16 @@ LANE_PIXEL_LENGTH = 705 - 440
 YM_PER_PIX = 30/LANE_PIXEL_LENGTH
 XM_PER_PIX = 3.7/LANE_PIXEL_WIDTH
 
+def lane_center_offset(left_base_m, right_base_m):
+    """
+    Calculates the lane center offset using the base positions of the lane lines.
+    :param left_base_m:
+    :param right_base_m:
+    :return:
+    """
+    return (1280/2*XM_PER_PIX) - (left_base_m + right_base_m) / 2
+
+
 def pixel_to_meters(left_fit, right_fit, YM_PER_PIX, XM_PER_PIX):
     """
     This function turns a second order polynomial from pixel units to meters

@@ -6,6 +6,7 @@ from perspective_transform import perspective_transform
 from locate_lines import fit_polynomial
 from search_prior import search_around_poly
 from curvature import measure_curvature_real
+from curvature import lane_center_offset
 from draw_image import draw_image
 from numpy.linalg import inv
 from moviepy.editor import VideoFileClip
@@ -102,6 +103,10 @@ def process_image(img):
                          ally = None, current_fit = left_fit, fitx = left_fitx)
         right_line.update(detected=True, radius_of_curvature=right_curv, allx=None,
                          ally=None, current_fit=right_fit, fitx = right_fitx)
+        print("Curvature of left lane line: {}".format(left_curv))
+        print("Curvature of right lane line: {}".format(right_curv))
+        offset = lane_center_offset(left_line.line_base_pos, right_line.line_base_pos)
+        print("Lane Center Offset: {}".format(offset))
     else:
         print("Warning: Lines were not detected!")
         left_line.detected = False

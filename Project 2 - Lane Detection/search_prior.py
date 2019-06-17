@@ -28,6 +28,7 @@ def poly_result(fit, y):
 
 def search_around_poly(binary_warped, left_fit, right_fit):
     margin = 100
+    #print("Enter search around poly")
 
     # Find non-zero items in binary warped image
     nonzero = binary_warped.nonzero()
@@ -81,10 +82,10 @@ def search_around_poly(binary_warped, left_fit, right_fit):
     # Use found points to calculate new polynomials
     left_fit = np.polyfit(x=lefty, y=leftx, deg=2)
     right_fit = np.polyfit(x=righty, y=rightx, deg=2)
-    print(left_fit)
-    print(right_fit)
+    #print(left_fit)
+    #print(right_fit)
     try:
-        left_fitx, right_fitx, ploty, new_left_fit, new_right_fit = fit_poly(binary_warped.shape, leftx, lefty, rightx, righty, left_fit, right_fit)
+        left_fitx, right_fitx, ploty, new_left_fit, new_right_fit = fit_poly(binary_warped.shape, left_fit, right_fit)
     except TypeError:
         return None, None, None, None, None, None, None, None, None, None
     return out_img, left_fit, right_fit, ploty, left_fitx, right_fitx, lefty, leftx, righty, rightx
