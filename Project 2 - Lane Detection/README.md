@@ -118,6 +118,16 @@ left_curverad = (1 + (2 * left_fit_cr[0] * y_eval + left_fit_cr[1]) ** 2) ** (3 
 right_curverad = (1 + (2 * right_fit_cr[0] * y_eval + right_fit_cr[1]) ** 2) ** (3 / 2) / abs(2 * right_fit_cr[0])  
 ```
 
+The offset is calculated by taking the average of the base positions from the left and right polynomial, this lane center is then subtracted from the vehicle position which is the half the image width converted from pixel units into meters.
+
+For the example images shown, the following values have been calculated:
+
+Left curvature: 1766.0671092527023
+Right curvature: 3674.3906658329925
+Left Base: 1.3938096638387134
+Right Base: 4.6673667259167235
+Lane Center Offset: -0.3639215282110517
+
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 The final result looks like this:
