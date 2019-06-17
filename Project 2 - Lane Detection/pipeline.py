@@ -138,5 +138,5 @@ def pipeline(write_images, show_images, show_images2, write_images2, show_images
 
 
 if __name__ == '__main__':
-    pipeline(write_images=False, write_images2=False, write_images3=False, show_images=False, show_images2=False,
-             show_images3=True, show_images4= True, write_images4= False)
+    pipeline(write_images=True, write_images2=True, write_images3=True, show_images=False, show_images2=False,
+             show_images3=False, show_images4= False, write_images4= True)
