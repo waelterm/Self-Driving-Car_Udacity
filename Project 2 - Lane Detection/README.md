@@ -122,16 +122,6 @@ The offset is calculated by taking the average of the base positions from the le
 
 For the example images shown, the following values have been calculated:
 
-Left curvature: 1766.07m
-
-Right curvature: 3674.39m
-
-Left Base: 1.39m
-
-Right Base: 4.67m
-
-Lane Center Offset: -0.36m
-
 To calculate the curvature of the lane, I used the best fit parameters of both lane lines and averaged them to get the lane polynomial.
 This lane polynomial is then used to calculate the curvature with the same formula as discussed above.
 
