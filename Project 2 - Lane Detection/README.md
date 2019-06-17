@@ -132,6 +132,9 @@ Right Base: 4.67m
 
 Lane Center Offset: -0.36m
 
+To calculate the curvature of the lane, I used the best fit parameters of both lane lines and averaged them to get the lane polynomial.
+This lane polynomial is then used to calculate the curvature with the same formula as discussed above.
+
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 The final result looks like this:
@@ -159,5 +162,6 @@ This fairly often happens when the street seems to have a slight incline or decl
 A gradient detection algorithm could help making the perspective transform more optimized for inclining or declining streets
   
 Additionally, it can sometimes be seen that the last part of the line is not found properly. This is not a bad failure mode, because it only slightly changes the polynomial at a large distance ahead. 
+UPDATE: This problem has been fixed by decreasing the horizon of the polygon used in the perspective transform. Previously lines with a strong curvature were cut off on the side during the transform. 
 
 Lastly, I was able to see from the challenge videos, that my algorithm does not perform well in situations where there seem to be other lines in the center of the lane. This could be fixed by adding a region of interest and not regarding any points outside this region.
