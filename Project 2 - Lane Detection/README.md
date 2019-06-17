@@ -122,11 +122,15 @@ The offset is calculated by taking the average of the base positions from the le
 
 For the example images shown, the following values have been calculated:
 
-Left curvature: 1766.0671092527023
-Right curvature: 3674.3906658329925
-Left Base: 1.3938096638387134
-Right Base: 4.6673667259167235
-Lane Center Offset: -0.3639215282110517
+Left curvature: 1766.07m
+
+Right curvature: 3674.39m
+
+Left Base: 1.39m
+
+Right Base: 4.67m
+
+Lane Center Offset: -0.36m
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
