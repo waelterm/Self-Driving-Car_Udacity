@@ -1,0 +1,59 @@
+
+Analyzing test.p
+===================================
+Sizes
+    Length : 12630
+    Example: [42 41]
+
+Coords
+    Length : 12630
+    Example: [ 6  5 37 36]
+
+Features
+    Length : 12630
+    Feature shape: (32, 32, 3)
+    Example has been saved as explore_dataset/test.jpg
+Labels
+    Length : 12630
+    Example: 2
+    Decoded Label: Speed limit (50km/h)
+
+Analyzing train.p
+===================================
+Sizes
+    Length : 34799
+    Example: [82 80]
+
+Coords
+    Length : 34799
+    Example: [ 8  7 75 73]
+
+Features
+    Length : 34799
+    Feature shape: (32, 32, 3)
+    Example has been saved as explore_dataset/train.jpg
+Labels
+    Length : 34799
+    Example: 41
+    Decoded Label: End of no passing
+
+Analyzing valid.p
+===================================
+Sizes
+    Length : 4410
+    Example: [73 74]
+
+Coords
+    Length : 4410
+    Example: [ 6  6 67 68]
+
+Features
+    Length : 4410
+    Feature shape: (32, 32, 3)
+    Example has been saved as explore_dataset/valid.jpg
+Labels
+    Length : 4410
+    Example: 36
+    Decoded Label: Go straight or right
+
+Process finished with exit code 0
