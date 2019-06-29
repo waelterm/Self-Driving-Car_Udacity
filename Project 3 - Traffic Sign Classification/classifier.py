@@ -88,6 +88,7 @@ if __name__ == '__main__':
         writer.writerow(header)
         for LEARNING_RATE in LEARNING_RATES:
             for KEEP_PROB in KEEP_PROBS:
+                print("Training with LR: {} KP: {}".format(LEARNING_RATE, KEEP_PROB))
                 validation_accuracies = run_session(num_labels = 43, EPOCHS = EPOCHS, BATCH_SIZE = BATCHS_SIZE,
                                                     X_train = X_train_norm, y_train = y_train,
                                                     X_validation = X_valid_norm, y_validation = y_valid,
