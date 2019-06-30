@@ -77,7 +77,7 @@ if __name__ == '__main__':
     #print(X_train_norm)
     EPOCHS = 100
     BATCHS_SIZE = 128
-    LEARNING_RATES = [0.001, 0.005, 0.0005]
+    LEARNING_RATES = [0.005, 0.0005]
     KEEP_PROBS = [0.5, 0.6, 0.7, 0.8, 0.9]
     import csv
 
