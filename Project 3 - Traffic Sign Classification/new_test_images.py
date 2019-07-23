@@ -43,30 +43,32 @@ with tf.Session() as sess:
     # Import Sign decoding file
     signnames = pd.read_csv('signnames.csv')  # doctest: +SKIP
     for i in range(len(X_train)):
+        print("Image File: {}".format(images[i]))
         # Classify and annotate each image
         #print(X_train[i].shape)
         #print(X_train[i])
         my_logits = sess.run(logits, feed_dict={x: X_train[i]})
         predictions = tf.nn.softmax(my_logits)
         index = sess.run(tf.argmax(predictions, axis=1))
-        print("Index: {}".format(index))
+        #print("Index: {}".format(index))
         my_predictions = sess.run(predictions).tolist()[0]
-        print(my_predictions)
+        #print(my_predictions)
         idx = my_predictions.index(max(my_predictions))
         value = my_predictions[idx]
         my_predictions[idx] = 0
         sign_type = signnames.SignName[idx]
         # Print next guesses
+        print("Guess #{}: {} , Confidence: {}".format(1, sign_type, value))
         for j in range(4):
             other_idx = my_predictions.index(max(my_predictions))
             other_value = my_predictions[other_idx]
             my_predictions[other_idx] = 0
-            print("Guess #{}: {} , Confidence: {}".format(j, signnames.SignName[other_idx], other_value))
+            print("Guess #{}: {} , Confidence: {}".format(j+2, signnames.SignName[other_idx], other_value))
 
         # Annotate images
-        print("Value: {}% Index: {} Sign Type: {}".format(value*100, idx, sign_type))
+        #print("Value: {}% Index: {} Sign Type: {}".format(value*100, idx, sign_type))
         cv2.imshow("Image1", raw_images[i])
-        cv2.waitKey(2000)
+        cv2.waitKey(1000)
         cv2.putText(raw_images[i], "Sign_Type: {}".format(sign_type), org=(50, 75), \
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2,
                     lineType=cv2.LINE_AA)

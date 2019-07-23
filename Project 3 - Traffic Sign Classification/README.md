@@ -57,7 +57,7 @@ The goals / steps of this project are the following:
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
 You're reading it! The code associated with this project is in this [Github](https://github.com/waelterm/Self-Driving-Car_Udacity/tree/master/Project%203%20-%20Traffic%20Sign%20Classification)
-)
+You will also find the output of the evaluations of the final model in the code_output.txt file.
 
 ### Data Set Summary & Exploration
 
@@ -102,7 +102,7 @@ I decided against using greyscale images after considering that the color inform
 
 The only steps that has been taken to modify the images is to normalize the images.
 
-Future #WORK: ZOOM in and rotate images to create additional images.
+Future improvements could be: Zoom in and rotate images to create additional images.
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -135,7 +135,7 @@ My final model consisted of the following layers:
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 I trained several models to identify how the hyperparameters would influence the networks performance:
-Each training period lasted 100 epochs, and was evaluated after each epoch.
+Each training period lasted 100 epochs, and was evaluated after each epoch. The adam optimizer has been used during each of the stages in the training.
 
 During the first training set, I varied the learning rate and the keeping probability of the dropout layers:
 
@@ -320,7 +320,17 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 It can be seen that the network is very confident in its wrong prediction.
 However, it seems to generalize well. All five predicted traffic signs are circular, Four of them have a red outer circle with a white interior, and three of them are speed limit signs. 
 
+In general all of the predictions the confidence values were very high. This might be another indicated that the network is slight overfit.
+To see the confidence values of the first five guesses for each of the test images, please refer to the code_output.txt file.
+If you run the new_test_images.py file, it will show you each of the images and annotate them with the classification and confidence values.
+
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-#This is a future addition to this project.
+This will be a future improvement
+
+###List of future improvements
+* Add more layers
+* Experiment with different optimizers
+* Create more data using zoomed and rotated images
+* Visualize neural network
 

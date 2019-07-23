@@ -1,0 +1,60 @@
+This is the code ouput when running test_accuracy.py:
+
+Test Accuracy: 94.01%%
+Train Accuracy: 99.93%%
+Validation Accuracy: 94.51%%
+
+
+This is the code output from running the new_test_images.py
+
+Image File: sign1.png
+Guess #1: Priority road , Confidence: 1.0
+Guess #2: End of no passing , Confidence: 1.2055907817938734e-15
+Guess #3: Go straight or right , Confidence: 3.73237987541564e-17
+Guess #4: End of all speed and passing limits , Confidence: 2.1211749169336452e-19
+Guess #5: End of speed limit (80km/h) , Confidence: 6.096214485764977e-20
+Image File: sign10.png
+Guess #1: Turn right ahead , Confidence: 0.9928792119026184
+Guess #2: Turn left ahead , Confidence: 0.005091196857392788
+Guess #3: Ahead only , Confidence: 0.0014982814900577068
+Guess #4: Keep right , Confidence: 0.0005310858832672238
+Guess #5: Roundabout mandatory , Confidence: 1.651637120403393e-07
+Image File: sign11.png
+Guess #1: Speed limit (30km/h) , Confidence: 0.9460998177528381
+Guess #2: Keep right , Confidence: 0.05389842391014099
+Guess #3: Speed limit (70km/h) , Confidence: 1.1797903880506055e-06
+Guess #4: No passing , Confidence: 4.5218286004455877e-07
+Guess #5: Speed limit (60km/h) , Confidence: 1.4805557668751135e-07
+Image File: sign3.png
+Guess #1: Stop , Confidence: 0.9995747208595276
+Guess #2: Speed limit (80km/h) , Confidence: 0.00039343739626929164
+Guess #3: No entry , Confidence: 1.5902349332463928e-05
+Guess #4: Speed limit (60km/h) , Confidence: 1.5416202586493455e-05
+Guess #5: Speed limit (30km/h) , Confidence: 5.99853080984758e-07
+Image File: sign4.png
+Guess #1: Yield , Confidence: 0.9999479055404663
+Guess #2: No passing , Confidence: 5.1790742872981355e-05
+Guess #3: No entry , Confidence: 2.2628805140811892e-07
+Guess #4: Turn left ahead , Confidence: 1.6427253513029427e-07
+Guess #5: No vehicles , Confidence: 2.0933802247213862e-08
+Image File: sign6.png
+Guess #1: Yield , Confidence: 0.8821877837181091
+Guess #2: Priority road , Confidence: 0.11777263134717941
+Guess #3: Keep right , Confidence: 3.786947127082385e-05
+Guess #4: Roundabout mandatory , Confidence: 6.341724088088085e-07
+Guess #5: Traffic signals , Confidence: 5.594438903244736e-07
+Image File: sign7.png
+Guess #1: Speed limit (60km/h) , Confidence: 0.9873719215393066
+Guess #2: Speed limit (30km/h) , Confidence: 0.006313974969089031
+Guess #3: Speed limit (80km/h) , Confidence: 0.006121465470641851
+Guess #4: End of speed limit (80km/h) , Confidence: 0.00011233024270040914
+Guess #5: Speed limit (100km/h) , Confidence: 7.71207342040725e-05
+Image File: sign9.png
+Guess #1: Turn left ahead , Confidence: 0.9776458144187927
+Guess #2: Keep right , Confidence: 0.02235312946140766
+Guess #3: End of speed limit (80km/h) , Confidence: 8.144910452756449e-07
+Guess #4: End of all speed and passing limits , Confidence: 1.2625152123746375e-07
+Guess #5: End of no passing , Confidence: 2.4566713108242766e-08
+Finished
+
+
