@@ -41,8 +41,8 @@ The goals / steps of this project are the following:
 
 
 [image18]: ./TrainingAnalysis/LR0_001.png "Learning Rate 0.001"
-[image19]: ./TrainingAnalysis/LR0.005.png "Learning Rate 0.005"
-[image20]: ./TrainingAnalysis/LR0.0005.png "Learning Rate 0.0005"
+[image19]: ./TrainingAnalysis/LR0_005.png "Learning Rate 0.005"
+[image20]: ./TrainingAnalysis/LR0_0005.png "Learning Rate 0.0005"
 [image21]: ./TrainingAnalysis/BatchSizes.png "Batch Sizes"
 
 
@@ -217,7 +217,7 @@ The code for this can be found in the test_accuracy.py file. The test accuracy w
 My final model results were:
 * training set accuracy of 99.93%
 * validation set accuracy of 94.51% 
-* test set accuracy of 94.01%)
+* test set accuracy of 94.01%
 
 The large difference of the validation accuracy compared to the training accuracy indicates that the network is already overfitted. 
 It might be wise to decrease the number of epochs in the future. Additionally, it might be a good idea to use a larger network, as well as a larger dataset.
