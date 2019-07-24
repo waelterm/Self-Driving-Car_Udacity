@@ -100,7 +100,7 @@ The following are some sample images with labels from each dataset. #WORK IMAGES
 
 I decided against using greyscale images after considering that the color information is very valuable when trying to identify traffic signs.
 
-The only steps that has been taken to modify the images is to normalize the images. The uniform distribution process makes sure that no very large numbers dominate the outcome of the network. We want the network to learn from all of the data in the image not only from some very bright spots. Normalizing also makes the network converge faster leading to faster and better training results.
+The only steps that has been taken to preprocess the images is normalization. The uniform distribution makes sure that no very large numbers dominate the outcome of the network. We want the network to learn from all of the pixels in the image not only from some very bright spots. Normalizing also makes the network converge faster leading with better training results.
 
 Future improvements could be: Zoom in and rotate images to create additional images.
 
@@ -291,6 +291,7 @@ Image 6
 Turn right ahead Sign classified as turn right ahead
 
 Because those images did not include a single speed limit sign, I added an image I found on the web to the test images:
+
 Image 7
 ![alt text][image15]
 
