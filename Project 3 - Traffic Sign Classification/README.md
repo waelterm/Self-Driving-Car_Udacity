@@ -100,7 +100,7 @@ The following are some sample images with labels from each dataset. #WORK IMAGES
 
 I decided against using greyscale images after considering that the color information is very valuable when trying to identify traffic signs.
 
-The only steps that has been taken to modify the images is to normalize the images.
+The only steps that has been taken to modify the images is to normalize the images. The uniform distribution process makes sure that no very large numbers dominate the outcome of the network. We want the network to learn from all of the data in the image not only from some very bright spots. Normalizing also makes the network converge faster leading to faster and better training results.
 
 Future improvements could be: Zoom in and rotate images to create additional images.
 
@@ -127,7 +127,7 @@ My final model consisted of the following layers:
 | Fully Connected		| output 84        									|
 | RELU					|												|
 | Dropout				| KP: 0.9												|
-| Fully Connected		| output 10        									|
+| Fully Connected		| output 43        									|
 |						|												|
  
 
@@ -243,33 +243,55 @@ If a well known architecture was chosen:
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 With a large dataset, like the one used in this case, I was not sure how high the chances would be that a random traffic sign from the internet would come from the same dataset.
-Therefore, I decided to ask some friends in Germany to take pictures of street signs they saw. These are the cropped results.
+Therefore, I decided to ask some friends in Germany to take pictures of street signs they saw. The cropped results can be seen below.
 
+Discussion of factors that might impact the classification:
+**Image 1:** The stop sign is well lit and in the center of the image. However, there is a ripped off sticker at the bottom of the street sign. This augmentation of the sign might make it more difficult for the network to classify it.
+
+**Image 2:** The yield sign is not blurry and provides a clear contrast to the background. However there is a wide poll behind it and a street light below. These additional features in proximity to the sign might make classification harder.
+
+**Image 3:** The second yield sign is in the center of the image, but due to the lighting conditions, the outside of the sign seems brown rather than red. Additionally  part of a Left Turn Ahead sign can be seen. Both of these items might make it harder for the network to classify the image
+
+**Image 4:** The fourth image shows a Trucks prohibited sign. This sign was not in the original dataset and I expect the network to misclassify it with a lower confidence. In addition to that, there are difficult lighting coditions due to uneven lighting accross the sign. Furthermore, the image is taken from below. This angle might make the classification more challenging than an image directly facing the sign. Lastly, the sign itself is partially washed off making it hard even for a human to imideately know what type of sign it is.
+
+**Image5:** The Left Turn Ahead sign, is can clearly be seen and is in the center of the image. However a very busy background as well as part of a Yield sign above the Left Turn Ahead sign might make it challenging to classify the image.
+
+**Image 6** The Right Turn Ahead sign is not blurred and can clearly be seen. owever, there is a sticker at on the street sign. This augmentation of the sign might make it more difficult for the network to classify it. Additionally, part of a stop sign, and part of a pedestrians only sign can be seen. These might further impact the network performance.
+
+**Image 7** The speed limit (70 km/h) image is very bright with strong contrast. It looks almost unnatural. THe intense colors might provide a challenge for the network. Furthermore, there is a strong contrast between the sky and the trees, this might be picked up as a feature of the sign even though it is not.
+
+Image 1
 ![alt text][image5] 
 
 Stop Sign identified as Stop Sign
 
+Image 2
 ![alt text][image6] 
 
 Yield Sign identified as Yield Sign
 
+Image 3
 ![alt text][image7] 
 
 Yield Sign identified as Yield Sign
 
+Image 4
 ![alt text][image8] 
 
 Undefined Sign classified as Speed Limit (60 km/h)
 
+Image 5
 ![alt text][image14] 
 
 Turn left ahead Sign classified as turn left ahead Sign
 
+Image 6
 ![alt text][image16]
 
 Turn right ahead Sign classified as turn right ahead
 
 Because those images did not include a single speed limit sign, I added an image I found on the web to the test images:
+Image 7
 ![alt text][image15]
 
 
