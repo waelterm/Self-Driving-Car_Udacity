@@ -261,31 +261,37 @@ Discussion of factors that might impact the classification:
 **Image 7** The speed limit (70 km/h) image is very bright with strong contrast. It looks almost unnatural. THe intense colors might provide a challenge for the network. Furthermore, there is a strong contrast between the sky and the trees, this might be picked up as a feature of the sign even though it is not.
 
 Image 1
+
 ![alt text][image5] 
 
 Stop Sign identified as Stop Sign
 
 Image 2
+
 ![alt text][image6] 
 
 Yield Sign identified as Yield Sign
 
 Image 3
+
 ![alt text][image7] 
 
 Yield Sign identified as Yield Sign
 
 Image 4
+
 ![alt text][image8] 
 
 Undefined Sign classified as Speed Limit (60 km/h)
 
 Image 5
+
 ![alt text][image14] 
 
 Turn left ahead Sign classified as turn left ahead Sign
 
 Image 6
+
 ![alt text][image16]
 
 Turn right ahead Sign classified as turn right ahead
@@ -293,6 +299,7 @@ Turn right ahead Sign classified as turn right ahead
 Because those images did not include a single speed limit sign, I added an image I found on the web to the test images:
 
 Image 7
+
 ![alt text][image15]
 
 
